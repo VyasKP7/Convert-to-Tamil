@@ -20,7 +20,7 @@ def put_text(filename, inp):
     doc.add_paragraph(inp)
     name = filename[:-4] + '.docx'
     doc.save(name)
-    my_label = tk.Label(root, text="File named {a} added to folder".format(a=filename))
+    my_label = tk.Label(root, text="File named {a} added to folder".format(a=name))
     my_label.pack()
 
 
@@ -91,7 +91,7 @@ def tamil_convert():
     if flag == 1:
         put_text(nname, lyrics)
     else:
-        put_txtb(nname,lyrics)
+        put_txtb(nname, lyrics)
 
 
 def english_convert():
@@ -108,23 +108,22 @@ def english_convert():
         lyrics = get_text(filename)
         lyrics = tamil_replace(lyrics, 'english')
 
-    my_label1 = tk.Label(root, text="Do you want to write to a .txt file or .docx file ?")
-    my_label1.pack()
 
     i = filename.rindex('/')
+
     if flag == 1:
         name = filename[i + 1:-5]
     else:
         name = filename[i + 1:-4]
 
-    directory = filename[:i+1]
-    name = name +'(english).txt'
+    directory = filename[:i + 1]
+    name = name + '(tamil).txt'
     nname = directory + name
 
-    docxButton = tk.Button(root, text="docx", command=put_text(nname, lyrics))
-    docxButton.pack()
-    txtButton = tk.Button(root, text="txt", command=put_txt(nname, lyrics))
-    txtButton.pack()
+    if flag == 1:
+        put_text(nname, lyrics)
+    else:
+        put_txt(nname,lyrics)
 
 
 
