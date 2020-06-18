@@ -1,8 +1,9 @@
+import docx
 #!/usr/bin/env python3
-
 import tkinter as tk
 from tkinter import filedialog, Text
-import docx
+
+import os
 
 root = tk.Tk()
 root.title("Convert Between Tamil and English")
@@ -117,7 +118,7 @@ def english_convert():
         name = filename[i + 1:-4]
 
     directory = filename[:i + 1]
-    name = name + '(tamil).txt'
+    name = name + '(english).txt'
     nname = directory + name
 
     if flag == 1:
