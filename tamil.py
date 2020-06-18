@@ -1,11 +1,11 @@
+#!/usr/bin/env python3
+
 import tkinter as tk
 from tkinter import filedialog, Text
-import os
-import sys
 import docx
 
-
 root = tk.Tk()
+root.title("Convert Between Tamil and English")
 
 
 def get_text(filename):
