@@ -1,13 +1,17 @@
 import docx
+from docx.shared import Inches
 #!/usr/bin/env python3
 import tkinter as tk
 from tkinter import filedialog, Text
-
-import os
+from PIL import ImageTk, Image
 
 root = tk.Tk()
 root.title("Convert Between Tamil and English")
 
+path = "Shantha.jpg"
+img = ImageTk.PhotoImage(Image.open(path))
+panel = tk.Label(root, image=img)
+panel.pack(side = "top", fill = "both", expand = "yes")
 
 def get_text(filename):
     doc = docx.Document(filename)
@@ -18,8 +22,9 @@ def get_text(filename):
 
 def put_text(filename, inp):
     doc = docx.Document()
-    doc.add_paragraph(inp)
     name = filename[:-4] + '.docx'
+    doc.add_picture('Shantha.jpg', width=Inches(5.0/2.0), height=Inches(3.0/2.0))
+    doc.add_paragraph(inp)
     doc.save(name)
     my_label = tk.Label(root, text="File named {a} added to folder".format(a=name))
     my_label.pack()
